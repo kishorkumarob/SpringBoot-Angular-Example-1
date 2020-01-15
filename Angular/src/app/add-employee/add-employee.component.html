@@ -1,0 +1,55 @@
+<h3>Create Employee</h3>
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4" >
+    <div [hidden]="submitted" style="width: 400px;">
+      <form [formGroup]="employeesaveform" #saveemployee (ngSubmit)="saveEmployee(saveEmployee)">
+          <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control"  formControlName="employee_name" data-toggle="tooltip" 
+                 data-placement="right" title="Enter Employee Name" >
+              <div class="alert alert-danger" *ngIf = "(EmployeeName.touched) && (EmployeeName.invalid)" 
+                style="margin-top: 5px;">
+                  <span *ngIf="EmployeeName.errors.required">Employee Name is Required</span>
+                    <span *ngIf = "EmployeeName.errors.minlength"> 
+                        MinLength Error 
+                    </span>                   
+                </div>
+          </div>
+  
+          <div class="form-group">
+              <label for="name">Designation</label>
+              <input type="text" class="form-control" formControlName="employee_designation" 
+                data-toggle="tooltip" data-placement="right" title="Enter Employee Designation">
+          </div>
+  
+          <div class="form-group">
+              <label for="branch">Department</label>
+                <select class="form-control" formControlName="employee_department" data-toggle="tooltip" 
+                      data-placement="right" title="Select Employee Department">
+                    <option value="null">--Select Department--</option>
+                  <option value="Marketing">Marketing</option>
+                  <option value="HR">HR</option>
+                  <option value="Finance">Finance</option>
+                  <option value="Sales">Sales</option>
+                </select>
+          </div>
+  
+          <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+  </div>
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4">
+      <div [hidden]="!submitted">
+         <h4>Employee Added SuccessFully!</h4>
+         <button (click)="addEmployeeForm()" class='btn btn-primary'>Add More Employee</button>
+      </div>      
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+
+
